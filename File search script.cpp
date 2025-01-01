@@ -35,20 +35,24 @@ int main()
     {
         // Solicitar el directorio
         std::string directorio;
+
         std::cout << "Enter directory: ";
+
         std::getline(std::cin, directorio);
 
         // Verificar si el directorio existe
         if (!std::filesystem::exists(directorio) || !std::filesystem::is_directory(directorio))
         {
             std::cout << "Directory not found" << std::endl;
-          
+
             continue;
         }
 
         // Solicitar el nombre del archivo (o parte del nombre)
         std::string nombre_archivo;
+
         std::cout << "Enter file name: ";
+
         std::getline(std::cin, nombre_archivo);
 
         std::cout << "------------------------------------" << std::endl;
@@ -69,7 +73,7 @@ int main()
             std::cout << "File not found" << std::endl;
         }
 
-        std::cout << "------------------------------------" << std::endl;
+        std::cout << "------------------------------------\n" << std::endl;
     }
 
     return 0;
