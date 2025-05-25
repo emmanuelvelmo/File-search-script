@@ -8,7 +8,7 @@ std::vector<std::string> buscar_archivo(const std::string &directorio, const std
 {
     std::vector<std::string> rutas_encontradas;
 
-    for (const auto &entry : std::filesystem::recursive_directory_iterator(directorio))
+    for (const std::filesystem::directory_entry &entry : std::filesystem::recursive_directory_iterator(directorio))
     {
         // Archivo y no otro tipo
         if (entry.is_regular_file())
