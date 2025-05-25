@@ -4,15 +4,17 @@
 #include <string>
 #include <algorithm>
 
-std::vector<std::string> buscar_archivo(const std::string& directorio, const std::string& nombre_archivo)
+std::vector<std::string> buscar_archivo(const std::string &directorio, const std::string &nombre_archivo)
 {
     std::vector<std::string> rutas_encontradas;
 
-    for (const auto& entry : std::filesystem::recursive_directory_iterator(directorio))
+    for (const auto &entry : std::filesystem::recursive_directory_iterator(directorio))
     {
+        // Archivo y no otro tipo
         if (entry.is_regular_file())
         {
             std::string nombre = entry.path().filename().string();
+            
             std::string nombre_lower = nombre;
             std::transform(nombre_lower.begin(), nombre_lower.end(), nombre_lower.begin(), ::tolower);
 
@@ -23,7 +25,7 @@ std::vector<std::string> buscar_archivo(const std::string& directorio, const std
             {
                 rutas_encontradas.push_back(entry.path().string());
             }
-        }
+        }  
     }
 
     return rutas_encontradas;
@@ -33,7 +35,6 @@ int main()
 {
     while (true)
     {
-        // Solicitar el directorio
         std::string directorio;
 
         std::cout << "Enter directory: ";
@@ -63,7 +64,7 @@ int main()
         // Mostrar los resultados
         if (!rutas_encontradas.empty())
         {
-            for (const auto& ruta : rutas_encontradas)
+            for (const auto &ruta : rutas_encontradas)
             {
                 std::cout << ruta << std::endl;
             }
