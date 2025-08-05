@@ -12,14 +12,14 @@ def buscar_archivo(directorio, nombre_archivo):
     return rutas_encontradas
 
 while True:
-    # Solicitar el directorio
-    directorio = input("Enter directory: ")
-    
-    # Verificar si el directorio existe
-    if not os.path.isdir(directorio):
-        print("Directory not found\n")
-        
-        continue
+    # Directorio de entrada
+    while True:
+        directorio_val = input("Enter directory: ").strip('"\'')
+
+        if os.path.isdir(directorio_val):
+            break
+
+        print("Wrong directory")
     
     # Solicitar el nombre del archivo (o parte del nombre)
     nombre_archivo = input("Enter file name: ")
@@ -27,14 +27,13 @@ while True:
     print("------------------------------------")
     
     # Buscar el archivo en el directorio
-    rutas_encontradas = buscar_archivo(directorio, nombre_archivo)
+    rutas_encontradas = buscar_archivo(directorio_val, nombre_archivo)
     
     # Mostrar los resultados
     if rutas_encontradas:
-        for ruta in rutas_encontradas:
-            print(ruta)
+        for ruta_val in rutas_encontradas:
+            print(ruta_val)
     else:
         print("File not found")
     
-
     print("------------------------------------\n")
