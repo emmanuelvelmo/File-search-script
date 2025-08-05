@@ -17,7 +17,7 @@ while True:
     
     # Verificar si el directorio existe
     if not os.path.isdir(directorio):
-        print("Directory not found")
+        print("Directory not found\n")
         
         continue
     
@@ -36,4 +36,5 @@ while True:
     else:
         print("File not found")
     
+
     print("------------------------------------\n")
